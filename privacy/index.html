@@ -26,17 +26,23 @@
   <main id="main-content" class="container">
     <p class="eyebrow">Privacy</p>
     <h1>Privacy Policy.</h1>
-    <p class="lede">Return is designed so your Echoes and selected-app settings stay on your device.</p>
-    <p class="meta">Effective 27 August 2026</p>
+    <p class="lede">Return keeps safety-sensitive settings on your iPhone and lets you choose whether to sync your Echoes through your private iCloud database.</p>
+    <p class="meta">Effective 3 September 2026</p>
 
     <section class="content-section" aria-labelledby="device-heading">
       <h2 id="device-heading">Information stored on your device</h2>
       <p>Return stores the Echoes you write, your delivery settings, and the timing and state needed to provide Return’s features. Return also stores opaque app selections supplied by Apple’s Family Controls. This information is stored locally by Return and in local storage shared only among Return’s own app extensions.</p>
     </section>
 
+    <section class="content-section" aria-labelledby="icloud-heading">
+      <h2 id="icloud-heading">Optional iCloud Sync</h2>
+      <p>iCloud Sync is off by default. If you turn it on, Return stores your Echoes and a limited set of supported delivery preferences in Return’s private CloudKit database for your Apple Account so they can stay up to date across devices signed in to the same Apple Account. Echo text and supported preference values are stored in encrypted CloudKit fields. Apple operates iCloud and CloudKit under Apple’s terms and privacy practices.</p>
+      <p>Your preferred name, protected-app selections, delivery mode on/off choices, Screen Time permission, notification and Live Activity permissions, and active app sessions stay on that iPhone and are not synced. Return pauses iCloud Sync if your Apple Account changes and asks you before merging that iPhone’s data into the new account.</p>
+    </section>
+
     <section class="content-section" aria-labelledby="not-collected-heading">
       <h2 id="not-collected-heading">Information Return does not collect</h2>
-      <p>Return does not require an account. Return does not include advertising or third-party analytics. Return does not operate a server that receives your Echoes, selected-app choices, or app-use data. Return does not transmit or log the text of your Echoes or raw Family Controls token data.</p>
+      <p>Return does not require a Return account. Return does not include advertising or third-party analytics. Return does not operate a server that receives your Echoes, selected-app choices, or app-use data. If you enable iCloud Sync, Return communicates directly with Apple’s CloudKit service. Return does not transmit or log the text of your Echoes, raw Family Controls token data, or raw Apple user identifiers in its diagnostics.</p>
     </section>
 
     <section class="content-section" aria-labelledby="apple-heading">
@@ -56,7 +62,7 @@
 
     <section class="content-section" aria-labelledby="deletion-heading">
       <h2 id="deletion-heading">Deleting information</h2>
-      <p>You can delete Echoes and change Return settings in the app. Removing Return asks iOS to remove its installed app data. Apple controls deletion timing and any copies in device or cloud backups.</p>
+      <p>You can delete individual Echoes and change Return settings in the app. When iCloud Sync is on, Echo deletions sync to the same private CloudKit database. Turning iCloud Sync off stops future syncing but does not currently provide a separate “Delete Cloud Data” action. Removing Return asks iOS to remove its installed app data, but may not remove records already stored in your private CloudKit database. Apple controls deletion timing and any copies in device or cloud backups.</p>
     </section>
 
     <section class="content-section" aria-labelledby="changes-heading">
