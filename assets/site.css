@@ -174,6 +174,56 @@ li {
   font-size: clamp(1.1rem, 3vw, 1.3rem);
 }
 
+/* Download-page components use the existing light/dark semantic palette. */
+.download-link {
+  margin-top: 1.5rem;
+  padding: 0.8rem 1.1rem;
+  border: 1px solid var(--accent);
+  border-radius: 0.5rem;
+  background: var(--accent);
+  color: var(--background);
+  line-height: 1.4;
+  text-align: left;
+  text-decoration: none;
+}
+
+.download-link:hover {
+  text-decoration: underline;
+}
+
+.compatibility {
+  margin-top: 0.9rem;
+}
+
+.echo-example {
+  margin: 2.5rem 0;
+  padding: clamp(1.25rem, 4vw, 2rem);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--accent);
+  border-radius: 0.5rem;
+  background: var(--surface);
+}
+
+.echo-text {
+  margin: 0.75rem 0;
+  font-size: clamp(1.4rem, 5vw, 1.9rem);
+  line-height: 1.4;
+}
+
+.echo-example .meta {
+  margin-bottom: 0;
+}
+
+.landing-section + .landing-section {
+  margin-top: 2.75rem;
+  padding-top: 0.25rem;
+  border-top: 1px solid var(--line);
+}
+
+.landing-section li + li {
+  margin-top: 0.6rem;
+}
+
 .resource-list {
   display: grid;
   margin: 2.75rem 0 0;
