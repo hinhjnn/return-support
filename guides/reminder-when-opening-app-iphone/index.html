@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="robots" content="index,follow">
+  <title>Show a Custom Message When You Open an iPhone App | Return</title>
+  <meta name="description" content="Set up an app-opening message with Shortcuts. Compare Show Notification, Show Alert and Return’s before-app pause, with clear limits and setup steps.">
+  <link rel="canonical" href="https://withreturn.com/guides/reminder-when-opening-app-iphone/">
+  <link rel="icon" href="/assets/home/return-icon.png" type="image/png">
+  <meta property="og:site_name" content="Return">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Show a Custom Message When You Open an iPhone App | Return">
+  <meta property="og:description" content="Set up an app-opening message with Shortcuts. Compare Show Notification, Show Alert and Return’s before-app pause, with clear limits and setup steps.">
+  <meta property="og:url" content="https://withreturn.com/guides/reminder-when-opening-app-iphone/">
+  <meta name="twitter:card" content="summary">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Article", "@id": "https://withreturn.com/guides/reminder-when-opening-app-iphone/#article", "headline": "How to Show a Custom Message When You Open an iPhone App", "description": "Set up an app-opening message with Shortcuts. Compare Show Notification, Show Alert and Return’s before-app pause, with clear limits and setup steps.", "mainEntityOfPage": "https://withreturn.com/guides/reminder-when-opening-app-iphone/", "inLanguage": "en", "dateModified": "2026-11-09", "author": {"@type": "Organization", "name": "Return", "url": "https://withreturn.com/guides/#about-these-guides"}, "publisher": {"@type": "Organization", "name": "Return", "url": "https://withreturn.com/"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Return", "item": "https://withreturn.com/"}, {"@type": "ListItem", "position": 2, "name": "Guides", "item": "https://withreturn.com/guides/"}, {"@type": "ListItem", "position": 3, "name": "How to Show a Custom Message When You Open an iPhone App", "item": "https://withreturn.com/guides/reminder-when-opening-app-iphone/"}]}]}</script>
+<link rel="stylesheet" href="/assets/home/bungee.css">
+<link rel="stylesheet" href="/assets/guides.css">
+<script src="/assets/navigation.js" defer></script>
+</head>
+<body class="reader-page" id="top">
+<a class="skip-link" href="#main">Skip to article</a>
+<header class="site-header"><a class="brand" href="/" aria-label="Return home"><img src="/assets/home/return-icon.png" alt="" width="32" height="32"><span translate="no">Return</span></a><nav class="header-actions" aria-label="Primary"><a href="/guides/">Guides</a><a href="/support/">Support</a><button hidden class="menu-button" type="button" aria-label="Open menu" aria-controls="site-menu" aria-expanded="false"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M5 12h22M5 20h22"/></svg></button></nav></header>
+<main id="main" class="reader-wrap">
+  <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Return</a><span aria-hidden="true">/</span><a href="/guides/">Guides</a></nav>
+  <article data-article="07">
+    <header class="article-heading">
+      <h1>How to Show a Custom Message When You Open an iPhone App</h1>
+      <p class="byline">By <a href="/guides/#about-these-guides">Return’s maker</a> <span aria-hidden="true">·</span> Reviewed <time datetime="2026-11-09">9 November 2026</time></p>
+      <p class="answer">You can show your own message when an iPhone app opens by combining <strong>App → Is Opened</strong> with <strong>Show Notification</strong> in Shortcuts. It triggers when you open or switch to the app. This is an opening-triggered message; it does not hold the app behind a gate.</p>
+      <p class="maker-disclosure">Written by the maker of Return, one of the options discussed in this guide.</p>
+    </header>
+    <div class="reading-layout">
+      <aside class="contents"><nav aria-label="On this page"><p>In this guide</p><ol><li><a href="#shortcuts-setup">Set up the message in Shortcuts</a></li><li><a href="#expected-result">What should happen</a></li><li><a href="#show-alert">When Show Alert is the better action</a></li><li><a href="#troubleshooting">If the message does not appear</a></li><li><a href="#return-heading">If you want a pause before continuing</a></li><li><a href="#reminder-examples">A few messages you could adapt</a></li></ol></nav></aside>
+      <div class="article-body">
+<div class="choice-summary"><p><strong>Choose the experience:</strong> <a href="#shortcuts-setup">Show Notification</a> for a system banner; <a href="#show-alert">Show Alert</a> for a response inside the shortcut; or <a href="#return-option" data-product-link data-placement="early">Return</a> for a selected-app pause with your own words and a choice to continue. Shortcuts is free; Return’s personal reminder features require membership after its introductory experience.</p></div>
+
+<h2 id="shortcuts-setup">Set up the message in Shortcuts</h2>
+<ol class="steps">
+  <li><strong>Open Shortcuts and select Automation.</strong> Add a personal automation. Apple’s iOS 26 guide describes <strong>Create Personal Automation</strong>, or the add button if automations already exist.</li>
+  <li><strong>Choose the App trigger.</strong> Select the app, choose <strong>Is Opened</strong>, and continue. This also covers switching back to that app.</li>
+  <li><strong>Add Show Notification.</strong> Find that action in the action search and add it to the automation.</li>
+  <li><strong>Enter your message.</strong> Replace the action’s text with a short sentence, such as “Reply to Maya, then get back to dinner.”</li>
+  <li><strong>Choose automatic running and save.</strong> Apple’s guide describes turning off <strong>Ask Before Running</strong> and confirming. If your version offers <strong>Run Immediately</strong> instead, choose that option. Its position in the setup can vary.</li>
+  <li><strong>Check it on your phone.</strong> Leave the selected app, reopen it, then try switching away and back. Check both the wording and the moment the message appears.</li>
+</ol>
+<p class="method-note">Documentation-based instructions using Apple’s iOS 26 guide, reviewed 9 November 2026. This setup has not been physically tested for this guide; interface labels can vary by iOS version.</p>
+<p>Apple documents <a href="https://support.apple.com/guide/shortcuts/apdfbdbd7123/9.0/ios/26">creating a personal automation</a>, the <a href="https://support.apple.com/guide/shortcuts/apde31e9638b/9.0/ios/26">App trigger</a>, and <a href="https://support.apple.com/guide/shortcuts/apd602971e63/9.0/ios/26">running without confirmation</a>.</p>
+
+<h2 id="expected-result">What should happen</h2>
+<p>Show Notification creates a system notification containing your sentence. It does not ask for a response or pause the shortcut. Because Is Opened triggers on opening or switching, the app may already be on screen when you see the message. <a href="https://support.apple.com/guide/shortcuts/apd2175adcab/9.0/ios/26">Apple’s notification-action explanation</a>.</p>
+<p>A Shortcuts notification uses the system’s Shortcuts presentation. The Return example below is a different product, with its own notification and before-app experience.</p>
+
+<h2 id="show-alert">When Show Alert is the better action</h2>
+<p>If you want an alert that waits for a response within the shortcut, use <strong>Show Alert</strong> instead. It can show custom text and pauses the shortcut until the person responds; its Cancel option stops the shortcut. <a href="https://support.apple.com/guide/shortcuts/use-the-show-alert-action-apdb9661c761/9.0/ios/26">Apple’s Show Alert guide</a>.</p>
+<p>Pausing a shortcut does not establish that another app is blocked from opening. Choose it for the interaction it provides, without treating it as a Screen Time restriction.</p>
+
+<h2 id="troubleshooting">If the message does not appear</h2>
+<ul>
+  <li>Confirm the selected app and <strong>Is Opened</strong> trigger, rather than Is Closed.</li>
+  <li>Check that the automation is enabled and that your chosen running mode does not require a separate confirmation.</li>
+  <li>Run the notification action in the editor to check the message separately from its trigger.</li>
+  <li>Review Focus and notification presentation if the action runs but you miss its banner. iOS controls how notifications are presented.</li>
+  <li>If it appears again when you return to the app, remember that switching to the app can trigger it too.</li>
+</ul>
+<p>For different messages, create separate automations for the apps that need them. Keep the messages relevant enough that seeing them repeatedly remains useful.</p>
+
+<section class="product-option" id="return-option">
+  <h2 id="return-heading">If you want a pause before continuing</h2>
+  <p>I make Return. You write a personal reminder, called an Echo, and select the apps where you want a pause. Before Apps uses Screen Time permission to bring your words into that choice. Read them, then continue into the selected app or return to something you saved for time away from your phone.</p>
+  <figure class="product-demo"><img src="/assets/home/echo-editor-native.png" width="1206" height="2622" loading="lazy" alt="Return’s Echo editor with a personal reading reminder entered and a Save control."><figcaption>Writing an Echo in Return: enter the words you want brought back, then save. Genuine iOS 26.5 Simulator capture with example text.</figcaption></figure>
+  <figure class="product-demo"><img src="/assets/home/before-apps-native.png" width="1206" height="2622" loading="lazy" alt="Return’s Before Apps screen: I’d rather read a few pages than keep scrolling, followed by Continue to Instagram."><figcaption>Return’s Before Apps screen, captured in the iOS 26.5 Simulator with example words. The selected app stays paused until you choose to continue. This capture shows the screen, not a physical-device timing test.</figcaption></figure>
+  <p>Start with one Before Apps Echo and one selected app. If you also want a reminder during the visit, see the <a href="/guides/screen-time-reminders-while-using-apps-iphone/#return-option">separate explanation of Return sessions and check-ins</a>.</p>
+  <div class="product-access">
+  <a class="download-button" href="https://apps.apple.com/app/id6804269652?pt=128983218&amp;ct=return_guide_07&amp;mt=8" data-app-store data-article="07" data-placement="comparison" data-moment="before">View Return on the App Store <span aria-hidden="true">↗</span></a>
+  <p>Try personal reminders for 72 hours after completing setup. Membership is required afterward for personal Echo creation, editing and delivery. No subscription starts automatically.</p>
+  <p class="product-compatibility">For iPhone · iOS 26.5 or later. Regional prices appear in the App Store. <a href="/terms/">Membership details</a>.</p>
+</div>
+</section>
+
+<h2 id="reminder-examples">A few messages you could adapt</h2>
+<ul>
+  <li>Messaging: “I’m here to reply to Maya. After that, I can leave.”</li>
+  <li>A break: “I can take a break. I’d like to choose how long it lasts.”</li>
+  <li>Bedtime: “I wanted to read a chapter tonight. Do I still want that?”</li>
+  <li>Posting: “I opened this to post the photo. What would make this visit complete?”</li>
+</ul>
+<p>These are illustrative examples. Use details that mean something to you. If a message feels bossy or vague, edit it or remove it from an app where it does not help.</p>
+<p>If you do not need automatic delivery, a note in Notes or on paper is enough to hold your sentence. You will need to revisit it yourself. For the habit behind repeated openings, see <a href="/guides/stop-opening-instagram-without-thinking/">stopping unplanned Instagram openings</a>.</p>
+</div>
+    </div>
+  </article>
+  <nav class="related-guides" aria-label="More guides"><h2>Keep going with a related guide</h2><ul><li><a href="/guides/stop-opening-instagram-without-thinking/">How to Stop Opening Instagram Without Thinking</a></li><li><a href="/guides/screen-time-reminders-while-using-apps-iphone/">Screen Time Reminders on iPhone: Timers, Limits and Session Check-Ins</a></li><li><a href="/guides/keep-ignoring-screen-time-limits/">How to Stop Ignoring Screen Time Limits</a></li></ul></nav>
+</main>
+<footer class="site-footer wrap"><a class="footer-brand" href="/" translate="no">Return</a><p>Your own words, brought back to you.</p><nav aria-label="Footer navigation"><a href="/guides/">Guides</a><a href="/support/">Support</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a></nav></footer>
+<dialog id="site-menu" aria-label="Site navigation"><div class="menu-top"><a class="brand" href="/" aria-label="Return home"><img src="/assets/home/return-icon.png" alt="" width="32" height="32"><span translate="no">Return</span></a><button class="menu-close" type="button" aria-label="Close menu" autofocus><svg viewBox="0 0 32 32" aria-hidden="true"><path d="m6 6 20 20M6 26 26 6"/></svg></button></div><nav class="menu-links" aria-label="Expanded navigation"><a href="/">Home</a><a href="/guides/">Guides</a><a href="/#how-it-works">How it works</a><a href="/#before-apps">Before apps</a><a href="/#while-using">While using</a><a href="/#during-the-day">Everyday Echoes</a><a href="/#download">Get Return</a></nav><a class="menu-support" href="/support/">Need a hand? Visit Support</a></dialog>
+</body>
+</html>
