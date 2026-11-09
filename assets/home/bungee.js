@@ -10,11 +10,14 @@ const saveButton = document.querySelector('.example-save');
 const saveLabel = document.querySelector('.save-label');
 const result = document.querySelector('.echo-result');
 const status = document.querySelector('.save-status');
+const motionControl = document.querySelector('.motion-control');
+const motionToggle = document.querySelector('.motion-toggle');
+const motionNote = document.querySelector('.motion-note');
 const example = Array.from(typedWords.textContent);
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
-const localPreview = ['127.0.0.1', 'localhost', '[::1]'].includes(location.hostname)
-  || location.protocol === 'file:';
-const previewMotion = localPreview && new URLSearchParams(location.search).get('motion') === 'full';
+// An explicit visitor choice works on the live site as well as local previews.
+// Without a choice, retain the system's reduced-motion preference.
+let motionPreference = new URLSearchParams(location.search).get('motion');
 const clamp = value => Math.max(0, Math.min(1, value));
 const smooth = value => value * value * (3 - 2 * value);
 const settle = value => 1 - Math.pow(1 - value, 4);
@@ -40,7 +43,10 @@ function configureStory() {
   editor.inert = false;
   result.removeAttribute('aria-hidden');
   status.textContent = '';
-  enabled = (!reducedMotion.matches || previewMotion) && entryHeight >= 580;
+  const motionRequested = motionPreference === 'full'
+    || (motionPreference !== 'reduced' && !reducedMotion.matches);
+  const fitsViewport = entryHeight >= 580;
+  enabled = motionRequested && fitsViewport;
   if (enabled) {
     root.classList.add('scroll-story-ready');
     if (stack.offsetHeight + 96 > entryHeight) {
@@ -49,6 +55,13 @@ function configureStory() {
     }
   }
   root.dataset.motion = enabled ? 'centered-morph' : 'natural-flow';
+  if (motionControl) {
+    motionControl.hidden = !fitsViewport || (motionRequested && !enabled)
+      || (!reducedMotion.matches && !['full', 'reduced'].includes(motionPreference));
+    motionToggle.textContent = enabled ? 'Turn animation off' : 'Play animation';
+    motionNote.textContent = enabled ? 'Scroll to explore.'
+      : reducedMotion.matches ? 'Reduced motion is on.' : 'Animation is off.';
+  }
   if (!enabled) {
     root.dataset.scene = 'complete';
     if (document.activeElement === saveButton) result.focus({ preventScroll: true });
@@ -132,6 +145,14 @@ saveButton.addEventListener('click', () => {
   // One cancellable phase owner. No page jump or independent layer animation.
   manual = { startedAt: performance.now(), startProgress: progress, boost: Math.max(0, 1.08 - progress), announced: false };
   updateStory();
+});
+
+motionToggle?.addEventListener('click', () => {
+  motionPreference = enabled ? 'reduced' : 'full';
+  const url = new URL(location.href);
+  url.searchParams.set('motion', motionPreference);
+  history.replaceState(history.state, '', url);
+  configureStory();
 });
 
 configureStory();
