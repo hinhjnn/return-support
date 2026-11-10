@@ -52,10 +52,6 @@ h1, h2 { text-wrap: balance; }
 .word-emphasis { position: relative; display: inline-block; isolation: isolate; white-space: nowrap; padding-inline: .06em; }
 .word-marker { position: absolute; z-index: -1; width: calc(100% + .12em); height: .9em; left: -.06em; bottom: .02em; fill: var(--yellow); transform: rotate(-1.2deg); }
 .marker-edge { opacity: .38; }
-.motion-control { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 4px 12px; margin-top: 20px; color: var(--muted); font-size: 14px; line-height: 1.5; }
-.motion-control[hidden] { display: none; }
-.motion-toggle { min-height: 44px; padding: 8px 4px; border: 0; background: transparent; color: var(--ink); text-decoration: underline; text-underline-offset: 4px; }
-.motion-toggle:hover { color: var(--focus); }
 h2 { font-size: clamp(36px, 4.5vw, 64px); line-height: 1.04; letter-spacing: -.038em; font-weight: 650; }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
 .echo-story { padding: 80px 0 144px; }

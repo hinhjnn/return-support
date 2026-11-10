@@ -10,14 +10,10 @@ const saveButton = document.querySelector('.example-save');
 const saveLabel = document.querySelector('.save-label');
 const result = document.querySelector('.echo-result');
 const status = document.querySelector('.save-status');
-const motionControl = document.querySelector('.motion-control');
-const motionToggle = document.querySelector('.motion-toggle');
-const motionNote = document.querySelector('.motion-note');
 const example = Array.from(typedWords.textContent);
-const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
-// An explicit visitor choice works on the live site as well as local previews.
-// Without a choice, retain the system's reduced-motion preference.
-let motionPreference = new URLSearchParams(location.search).get('motion');
+// The homepage story follows scrolling by default; no playback step is required.
+// Retain the explicit static-view option without changing the default experience.
+const motionRequested = new URLSearchParams(location.search).get('motion') !== 'reduced';
 const clamp = value => Math.max(0, Math.min(1, value));
 const smooth = value => value * value * (3 - 2 * value);
 const settle = value => 1 - Math.pow(1 - value, 4);
@@ -43,8 +39,6 @@ function configureStory() {
   editor.inert = false;
   result.removeAttribute('aria-hidden');
   status.textContent = '';
-  const motionRequested = motionPreference === 'full'
-    || (motionPreference !== 'reduced' && !reducedMotion.matches);
   const fitsViewport = entryHeight >= 580;
   enabled = motionRequested && fitsViewport;
   if (enabled) {
@@ -55,13 +49,6 @@ function configureStory() {
     }
   }
   root.dataset.motion = enabled ? 'centered-morph' : 'natural-flow';
-  if (motionControl) {
-    motionControl.hidden = !fitsViewport || (motionRequested && !enabled)
-      || (!reducedMotion.matches && !['full', 'reduced'].includes(motionPreference));
-    motionToggle.textContent = enabled ? 'Turn animation off' : 'Play animation';
-    motionNote.textContent = enabled ? 'Scroll to explore.'
-      : reducedMotion.matches ? 'Reduced motion is on.' : 'Animation is off.';
-  }
   if (!enabled) {
     root.dataset.scene = 'complete';
     if (document.activeElement === saveButton) result.focus({ preventScroll: true });
@@ -147,14 +134,6 @@ saveButton.addEventListener('click', () => {
   updateStory();
 });
 
-motionToggle?.addEventListener('click', () => {
-  motionPreference = enabled ? 'reduced' : 'full';
-  const url = new URL(location.href);
-  url.searchParams.set('motion', motionPreference);
-  history.replaceState(history.state, '', url);
-  configureStory();
-});
-
 configureStory();
 window.addEventListener('scroll', queueStory, { passive: true });
 window.addEventListener('resize', () => {
@@ -168,4 +147,3 @@ window.addEventListener('resize', () => {
   queueStory();
 });
 window.addEventListener('pageshow', queueStory);
-reducedMotion.addEventListener('change', configureStory);
