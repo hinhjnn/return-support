@@ -17,7 +17,12 @@ const motionRequested = new URLSearchParams(location.search).get('motion') !== '
 const clamp = value => Math.max(0, Math.min(1, value));
 const smooth = value => value * value * (3 - 2 * value);
 const settle = value => 1 - Math.pow(1 - value, 4);
-const set = (name, value) => root.style.setProperty(name, value);
+// Only the viewport height and following-section clearance affect the page.
+// Keep per-frame properties inside the story and skip unchanged writes.
+const set = (name, value) => {
+  const surface = name === '--entry-height' || name === '--scene-clearance' ? root : story;
+  if (surface.style.getPropertyValue(name) !== value) surface.style.setProperty(name, value);
+};
 let entryWidth = window.innerWidth;
 let entryHeight = window.innerHeight;
 let enabled = false;
@@ -25,14 +30,15 @@ let frame = 0;
 let lastCharacterCount = -1;
 let manual = null;
 let wordJourney = { x: 0, y: 0, scale: 1 };
+let storyTop = 0;
+let brandBottom = 0;
 
 function configureStory() {
   if (frame) cancelAnimationFrame(frame);
   frame = 0;
   manual = null;
-  root.classList.remove('scroll-story-ready');
   ['--word-x', '--word-y', '--word-scale', '--bridge-opacity', '--editor-enter',
-    '--editor-chrome', '--result-opacity', '--native-copy-opacity', '--reason-opacity'].forEach(name => root.style.removeProperty(name));
+    '--editor-chrome', '--result-opacity', '--native-copy-opacity', '--reason-opacity'].forEach(name => story.style.removeProperty(name));
   set('--entry-height', `${entryHeight}px`);
   typedWords.textContent = example.join('');
   lastCharacterCount = example.length;
@@ -41,8 +47,8 @@ function configureStory() {
   status.textContent = '';
   const fitsViewport = entryHeight >= 580;
   enabled = motionRequested && fitsViewport;
+  root.classList.toggle('scroll-story-ready', enabled);
   if (enabled) {
-    root.classList.add('scroll-story-ready');
     if (stack.offsetHeight + 96 > entryHeight) {
       enabled = false;
       root.classList.remove('scroll-story-ready');
@@ -56,6 +62,11 @@ function configureStory() {
   }
   const source = typedWords.getBoundingClientRect();
   const target = targetWords.getBoundingClientRect();
+  const stackBounds = stack.getBoundingClientRect();
+  const stageBounds = stage.getBoundingClientRect();
+  const scrollY = window.scrollY;
+  storyTop = story.getBoundingClientRect().top + scrollY;
+  brandBottom = brand.getBoundingClientRect().bottom + scrollY;
   wordJourney = {
     x: target.left - source.left,
     y: target.top - source.top,
@@ -63,15 +74,18 @@ function configureStory() {
   };
   // Natural-flow separation: the next image reaches the viewport only after
   // the centered composition's last line has cleared. There is no opacity gate.
-  set('--scene-clearance', `${Math.ceil(stack.getBoundingClientRect().bottom - stage.getBoundingClientRect().top) + 24}px`);
+  set('--scene-clearance', `${Math.ceil(stackBounds.bottom - stageBounds.top) + 24}px`);
   updateStory();
 }
 
 function updateStory() {
   frame = 0;
   if (!enabled) return;
-  const progress = -story.getBoundingClientRect().top / entryHeight;
-  const brandGone = brand.getBoundingClientRect().bottom <= 0;
+  // These document positions only change when configureStory handles resize.
+  // Reading scrollY avoids a layout read after the preceding frame's writes.
+  const scrollY = window.scrollY;
+  const progress = (scrollY - storyTop) / entryHeight;
+  const brandGone = scrollY >= brandBottom;
   if (manual && progress < manual.startProgress - .1) {
     manual = null;
     status.textContent = '';
@@ -128,7 +142,7 @@ function queueStory() {
 
 saveButton.addEventListener('click', () => {
   if (!enabled || manual || saveButton.getAttribute('aria-disabled') === 'true') return;
-  const progress = -story.getBoundingClientRect().top / entryHeight;
+  const progress = (window.scrollY - storyTop) / entryHeight;
   // One cancellable phase owner. No page jump or independent layer animation.
   manual = { startedAt: performance.now(), startProgress: progress, boost: Math.max(0, 1.08 - progress), announced: false };
   updateStory();
