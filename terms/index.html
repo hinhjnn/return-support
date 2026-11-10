@@ -5,13 +5,42 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light dark">
   <meta name="referrer" content="no-referrer">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; img-src 'self' data:; script-src 'none'; connect-src 'none'; font-src 'none'; object-src 'none'; frame-src 'none'; form-action 'none'; base-uri 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self' 'sha256-ixZ9XY1U0MBe7xsaCsMMPssoUoCrFynJctmN93urkP8='; img-src 'self' data: https://www.googletagmanager.com https://*.google-analytics.com; script-src 'self' https://www.googletagmanager.com; connect-src https://www.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com; font-src 'none'; object-src 'none'; frame-src 'none'; form-action 'none'; base-uri 'none'">
   <meta name="description" content="Terms for using Return.">
   <title>Terms — Return</title>
   <link rel="icon" href="data:,">
   <link rel="stylesheet" href="../assets/site.css">
 <meta name="robots" content="index,follow">
   <link rel="canonical" href="https://withreturn.com/terms/">
+<meta name="return-analytics-id" content="G-HGEEVW2KSK">
+<style id="analytics-styles">
+#analytics-choice[hidden], [data-analytics-settings][hidden] { display: none !important; }
+#analytics-choice {
+  position: fixed; z-index: 120; right: 20px; bottom: 20px;
+  width: min(420px, calc(100vw - 40px)); padding: 22px; box-sizing: border-box;
+  border: 1px solid #dedbd3; border-radius: 18px; background: #fff;
+  box-shadow: 0 6px 26px rgb(0 0 0 / .1); color: #20201e;
+  font: 400 15px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  text-align: left;
+}
+#analytics-choice h2 { margin: 0 0 8px; font-size: 18px; line-height: 1.3; letter-spacing: -.02em; }
+#analytics-choice p { margin: 0 0 14px; font: inherit; color: inherit; }
+#analytics-choice a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+.analytics-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.analytics-actions button {
+  flex: 1; min-height: 44px; padding: 10px 14px; cursor: pointer;
+  border: 1px solid #b6b2a8; border-radius: 9px; background: #fff; color: #20201e;
+  font: 600 14px/1.4 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+.analytics-actions button:hover { background: #fff5d8; }
+.analytics-actions button:focus-visible, [data-analytics-settings]:focus-visible { outline: 2px solid #20201e; outline-offset: 4px; }
+[data-analytics-settings] { border: 0; padding: 6px 0; background: none; color: inherit; cursor: pointer; font: inherit; text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width: 480px) {
+  #analytics-choice { right: 12px; bottom: max(12px, env(safe-area-inset-bottom)); width: calc(100vw - 24px); padding: 18px; }
+}
+
+</style>
+<script src="/assets/analytics.js?v=20261110" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to content</a>
@@ -63,8 +92,13 @@
         <a href="../support/">Support</a>
         <a href="../privacy/">Privacy</a>
         <a href="./" aria-current="page">Terms</a>
-      </nav>
+      <button type="button" data-analytics-settings hidden>Analytics settings</button></nav>
     </div>
   </footer>
+<section id="analytics-choice" role="region" aria-labelledby="analytics-choice-heading" hidden>
+  <h2 id="analytics-choice-heading">Help us understand what works.</h2>
+  <p>Allow Google Analytics cookies to measure visits, traffic sources and App Store button clicks? Your choice won’t affect how the site works. <a href="/privacy/#website-heading">Privacy details</a>.</p>
+  <div class="analytics-actions"><button type="button" data-analytics-decline>No thanks</button><button type="button" data-analytics-accept>Allow analytics</button></div>
+</section>
 </body>
 </html>

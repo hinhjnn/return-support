@@ -5,13 +5,42 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light dark">
   <meta name="referrer" content="no-referrer">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; img-src 'self' data:; script-src 'none'; connect-src 'none'; font-src 'none'; object-src 'none'; frame-src 'none'; form-action 'none'; base-uri 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self' 'sha256-ixZ9XY1U0MBe7xsaCsMMPssoUoCrFynJctmN93urkP8='; img-src 'self' data: https://www.googletagmanager.com https://*.google-analytics.com; script-src 'self' https://www.googletagmanager.com; connect-src https://www.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com; font-src 'none'; object-src 'none'; frame-src 'none'; form-action 'none'; base-uri 'none'">
   <meta name="description" content="How Return handles data.">
   <title>Privacy Policy — Return</title>
   <link rel="icon" href="data:,">
   <link rel="stylesheet" href="../assets/site.css">
 <meta name="robots" content="index,follow">
   <link rel="canonical" href="https://withreturn.com/privacy/">
+<meta name="return-analytics-id" content="G-HGEEVW2KSK">
+<style id="analytics-styles">
+#analytics-choice[hidden], [data-analytics-settings][hidden] { display: none !important; }
+#analytics-choice {
+  position: fixed; z-index: 120; right: 20px; bottom: 20px;
+  width: min(420px, calc(100vw - 40px)); padding: 22px; box-sizing: border-box;
+  border: 1px solid #dedbd3; border-radius: 18px; background: #fff;
+  box-shadow: 0 6px 26px rgb(0 0 0 / .1); color: #20201e;
+  font: 400 15px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  text-align: left;
+}
+#analytics-choice h2 { margin: 0 0 8px; font-size: 18px; line-height: 1.3; letter-spacing: -.02em; }
+#analytics-choice p { margin: 0 0 14px; font: inherit; color: inherit; }
+#analytics-choice a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+.analytics-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.analytics-actions button {
+  flex: 1; min-height: 44px; padding: 10px 14px; cursor: pointer;
+  border: 1px solid #b6b2a8; border-radius: 9px; background: #fff; color: #20201e;
+  font: 600 14px/1.4 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+.analytics-actions button:hover { background: #fff5d8; }
+.analytics-actions button:focus-visible, [data-analytics-settings]:focus-visible { outline: 2px solid #20201e; outline-offset: 4px; }
+[data-analytics-settings] { border: 0; padding: 6px 0; background: none; color: inherit; cursor: pointer; font: inherit; text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width: 480px) {
+  #analytics-choice { right: 12px; bottom: max(12px, env(safe-area-inset-bottom)); width: calc(100vw - 24px); padding: 18px; }
+}
+
+</style>
+<script src="/assets/analytics.js?v=20261110" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to content</a>
@@ -45,7 +74,7 @@
 
     <section class="content-section" aria-labelledby="not-collected-heading">
       <h2 id="not-collected-heading">Information Return does not collect</h2>
-      <p>Return does not require a Return account. Return does not include advertising or third-party analytics. Return does not operate a server that receives your Echoes, selected-app choices, or app-use data. Return’s diagnostics use status, counts, timestamps and local references; they are designed to exclude Echo text, raw app-selection tokens and exact protected-app names from diagnostic exports.</p>
+      <p>The Return iPhone app does not require a Return account and does not include advertising or third-party analytics. Return does not operate a server that receives your Echoes, selected-app choices, or app-use data. Return’s diagnostics use status, counts, timestamps and local references; they are designed to exclude Echo text, raw app-selection tokens and exact protected-app names from diagnostic exports. The optional analytics on this website are separate and described below.</p>
     </section>
 
     <section class="content-section" aria-labelledby="apple-heading">
@@ -66,7 +95,15 @@
 
     <section class="content-section" aria-labelledby="website-heading">
       <h2 id="website-heading">This website</h2>
-      <p>This static site is hosted by GitHub Pages. When you visit it, GitHub may process technical information such as your IP address, browser information, and request logs under the <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub General Privacy Statement</a>. Return does not add analytics, cookies, forms, or tracking scripts to this site.</p>
+      <p>This static site is hosted by GitHub Pages. When you visit it, GitHub may process technical information such as your IP address, browser information, and request logs under the <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub General Privacy Statement</a>.</p>
+      <h3>Optional website analytics</h3>
+      <p>With your permission, this website uses Google Analytics 4 to understand which pages people visit, where visits come from, and which App Store buttons they select. Google receives page views, public page titles and addresses without query strings or fragments, referring website origins, selected campaign labels, and App Store click events with the originating page and button position. Google also processes technical information such as browser and device information, approximate location and cookie identifiers. Your connection exposes your IP address to Google, which can use it to derive approximate location. See <a href="https://support.google.com/analytics/answer/12017362">Google’s data collection information</a> and <a href="https://policies.google.com/privacy">Privacy Policy</a>.</p>
+      <p>We do not load the Google Analytics tag or send website analytics before you choose “Allow analytics”. You can choose “No thanks” or change your choice through “Analytics settings” in the footer. Refusing analytics does not affect the site or your ability to visit the App Store. Your choice is saved in this browser’s local storage for up to 180 days when storage is available.</p>
+      <p>If you allow analytics, Google uses first-party cookies such as <code>_ga</code> and <code>_ga_HGEEVW2KSK</code>. We configure these to expire after 180 days without extending that period on each visit. Turning analytics off stops subsequent collection from this site and removes those cookies in this browser; it does not erase events already received by Google. Clearing browser storage also removes your saved choice.</p>
+      <p>We configure Google Analytics user-level and event-level retention to two months, with retention reset on new activity disabled. This setting does not apply to standard aggregated reports. Google may process information on servers outside your country. Website analytics does not send your Echoes, names, email addresses, or information from the Return app. We do not enable Google signals, advertising personalisation, or automatic form and outbound-link tracking.</p>
+      <p data-analytics-state>Website analytics only starts after you allow it in this browser.</p>
+      <h3>Links to the App Store</h3>
+      <p>Our App Store links include campaign labels identifying this website or the guide you came from. Apple processes visits and downloads under its <a href="https://www.apple.com/legal/privacy/">Privacy Policy</a> and may report aggregated campaign results to us. Clicking an App Store button does not tell us whether you downloaded Return. These campaign labels remain part of the links whether or not you allow website analytics.</p>
     </section>
 
     <section class="content-section" aria-labelledby="deletion-heading">
@@ -100,8 +137,13 @@
         <a href="../support/">Support</a>
         <a href="./" aria-current="page">Privacy</a>
         <a href="../terms/">Terms</a>
-      </nav>
+      <button type="button" data-analytics-settings hidden>Analytics settings</button></nav>
     </div>
   </footer>
+<section id="analytics-choice" role="region" aria-labelledby="analytics-choice-heading" hidden>
+  <h2 id="analytics-choice-heading">Help us understand what works.</h2>
+  <p>Allow Google Analytics cookies to measure visits, traffic sources and App Store button clicks? Your choice won’t affect how the site works. <a href="/privacy/#website-heading">Privacy details</a>.</p>
+  <div class="analytics-actions"><button type="button" data-analytics-decline>No thanks</button><button type="button" data-analytics-accept>Allow analytics</button></div>
+</section>
 </body>
 </html>
