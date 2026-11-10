@@ -57,7 +57,6 @@
       window.gtag = tag;
       tag('consent', 'default', {analytics_storage: 'denied', ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied'});
       tag('consent', 'update', {analytics_storage: 'granted'});
-      tag('js', new Date());
       tag('set', 'ads_data_redaction', true);
       tag('set', 'url_passthrough', false);
       let referrer = '';
@@ -82,6 +81,11 @@
         const value = params.get(utm);
         if (value && /^[a-z][a-z0-9_-]{0,59}$/i.test(value)) config[field] = value;
       }
+      // Upgraded Google tags can initialize their destination from the js
+      // event. Apply defaults first so that initialization cannot send an
+      // extra page view or use the unsanitized address before our config.
+      tag('set', config);
+      tag('js', new Date());
       tag('config', id, config);
       const script = document.createElement('script');
       script.async = true;
